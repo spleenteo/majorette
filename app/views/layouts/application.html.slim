@@ -12,5 +12,17 @@ html
 
   body
     = render "flashes"
-    = yield
+    .wrap
+      .hero
+        .hero__sticky
+          .gamma Majorette: upvote everything
+
+        .hero__body
+          .space--both-2.align--center
+            .nav
+              .nav__item
+                a.button--small href="#" new list
+              .nav__item
+                a.button--small href="#" new item
+      = yield
     = render "javascript"
