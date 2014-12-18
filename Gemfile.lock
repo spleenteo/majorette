@@ -179,7 +179,7 @@ GEM
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
     safe_yaml (1.0.4)
-    sass (3.2.19)
+    sass (3.4.9)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
     showcase (0.2.5)
