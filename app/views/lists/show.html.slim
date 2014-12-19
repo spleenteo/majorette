@@ -2,4 +2,12 @@
   h1 = @list.title
 
   ul
-    li elementi
+    - @list.items.each do |item|
+      li
+        div = item.title
+        .milli
+          = time_ago_in_words(item.created_at)
+          '  &bull;
+          = link_to item.url, item.url
+        p.milli = item.description
+

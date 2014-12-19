@@ -4,27 +4,24 @@
     .formatted-content
       h2 Latest lists
 
-      ul
+      - @lists.each do |item|
         li
-          a href="#" graphic design (23)
-          .milli ultimo update 15-05-2014 from @steffoz
-        li
-          a href="#" migliori quote di cantiere (2)
-          .milli ultimo update 01-05-2014 from @spleenteo
-        li
-          a href="#" graphic design (23)
-          .milli ultimo update 15-05-2014 from @steffoz
-        li
-          a href="#" migliori quote di cantiere (2)
-          .milli ultimo update 01-05-2014 from @spleenteo
+          = link_to item.title, list_path(item)
+          .milli = time_ago_in_words(item.created_at)
+
+
 
   .grid__item.desk-6-12
     .formatted-content
       h2 Latest entries
       ul
-        li
-          a href="#" Come scaricare porno con torrent (2 votes)
-          .milli 15-05-2014 @steffoz in "migliori quote di cantiere"
-        li
-          a href="#" Higuys (8 votes)
-          .milli 15-05-2014 @rugginoso in "Proposte nome App RailsRumble"
+        - @items.each do |item|
+          li
+            div = item.title
+            .milli
+              = time_ago_in_words(item.created_at)
+              '  &bull;
+              = link_to item.list.title, list_path(item.list)
+              '  &bull;
+              = link_to item.url, item.url
+            p.milli = item.description
