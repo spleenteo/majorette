@@ -21,7 +21,7 @@ html
           .space--both-2.align--center
             .nav
               .nav__item
-                a.button--small href="#" new list
+                = link_to "new list", new_list_path, class: "button--small"
               .nav__item
                 a.button--small href="#" new item
       = yield

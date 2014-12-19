@@ -1,2 +1,7 @@
 .formatted-content
   h2 New list
+
+= simple_form_for @list do |f|
+  = f.input :title
+  = f.input :description
+
