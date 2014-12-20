@@ -7,9 +7,10 @@
       - @lists.each do |item|
         li
           strong = link_to item.title, list_path(item)
+          = " - #{item.items.count} items"
+          .milli = item.description
           .milli
             = time_ago_in_words(item.created_at)
-            = " - #{item.items.count} items"
 
 
 
@@ -19,11 +20,13 @@
       ul
         - @items.latest.each do |item|
           li
-            div: strong = item.title
+            div
+              strong = item.title
+              '  -
+              = link_to item.list.title, list_path(item.list)
+
             .milli
               = time_ago_in_words(item.created_at)
-              '  &bull;
-              = link_to item.list.title, list_path(item.list)
               '  &bull;
               = link_to item.url, item.url
             p.milli = item.description

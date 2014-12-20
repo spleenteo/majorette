@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    if params[:list_id]
+      @list = List.find(params[:list_id])
+    end
   end
 
   def create

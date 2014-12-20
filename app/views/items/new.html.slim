@@ -1,5 +1,13 @@
 .formatted-content
-  h2 New Item
+  .space--both-2
+    - if @list.present?
+      h1 A new item in "#{@list.title}"'s list
+      p
+        = "(this list contains #{@list.items.count} items) — "
+        = @list.description
+      = link_to "oh no! Back to list items", list_path(@list), class: "button--small"
+    - else
+      h2 New Item
 
 
 .form
