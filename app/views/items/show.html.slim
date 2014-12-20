@@ -1,0 +1,10 @@
+.formatted-content
+  h1 = @item.title
+  p = @item.description
+
+  - if @item.url
+    = link_to @item.url, @item.url
+
+  .milli
+    = time_ago_in_words(@item.created_at)
+

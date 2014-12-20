@@ -1,0 +1,26 @@
+.formatted-content
+  h2 New Item
+
+
+.form
+  = form_for @item do |f|
+    fieldset
+      .form__field
+        = f.label :title
+        = f.text_field :title
+
+      .form__field
+        = f.label :description
+        = f.text_area :description
+
+      .form__field
+        = f.label :url
+        = f.text_field :url
+
+      .form__field
+        = f.label :list
+        = select("item", "list_id", List.all.collect {|p| [ p.title, p.id ] })
+
+
+      .button
+        = f.submit

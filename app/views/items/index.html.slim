@@ -1,0 +1,8 @@
+.formatted-content
+  h1 Items index
+
+  ul
+    - @items.each do |item|
+      li
+        = link_to item.title, item_path(item)
+        .milli = time_ago_in_words(item.created_at)

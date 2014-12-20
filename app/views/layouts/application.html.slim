@@ -23,6 +23,6 @@ html
               .nav__item
                 = link_to "new list", new_list_path, class: "button--small"
               .nav__item
-                a.button--small href="#" new item
+                = link_to "new item", new_item_path, class: "button--small"
       = yield
     = render "javascript"
