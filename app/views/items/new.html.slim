@@ -19,7 +19,7 @@
 
       .form__field
         = f.label :list
-        = select("item", "list_id", List.all.collect {|p| [ p.title, p.id ] })
+        = select("item", "list_id", List.all.collect {|p| [ p.title, p.id ] }, :selected => params[:list_id])
 
 
       .button
