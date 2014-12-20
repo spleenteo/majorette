@@ -26,7 +26,8 @@
               = link_to item.list.title, list_path(item.list)
 
             .milli
-              = time_ago_in_words(item.created_at)
-              '  &bull;
               = link_to item.url, item.url
             p.milli = item.description
+            .milli
+              = "#{time_ago_in_words(item.created_at)} - by #{item.user.email}"
+
