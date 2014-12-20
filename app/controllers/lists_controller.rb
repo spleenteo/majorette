@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
 
+  before_action :authenticate_user!
 
   def new
     @list = List.new
