@@ -3,6 +3,6 @@ class Item < ActiveRecord::Base
   validates :title, presence: true
 
   scope :latest, -> { order("created_at desc") }
-  default_scope { order(:position) }
+  #default_scope { order(:created_at) }
 
 end

@@ -6,8 +6,10 @@
 
       - @lists.each do |item|
         li
-          = link_to item.title, list_path(item)
-          .milli = time_ago_in_words(item.created_at)
+          strong = link_to item.title, list_path(item)
+          .milli
+            = time_ago_in_words(item.created_at)
+            = " - #{item.items.count} items"
 
 
 
@@ -15,9 +17,9 @@
     .formatted-content
       h2 Latest entries
       ul
-        - @items.each do |item|
+        - @items.latest.each do |item|
           li
-            div = item.title
+            div: strong = item.title
             .milli
               = time_ago_in_words(item.created_at)
               '  &bull;
