@@ -4,7 +4,7 @@
     .formatted-content
       h2 Latest lists
 
-      - @lists.each do |item|
+      - @lists.latest.each do |item|
         li
           strong = link_to item.title, list_path(item)
           = " - #{item.items.count} items"
