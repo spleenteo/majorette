@@ -21,6 +21,8 @@ html
             .nav__item = link_to "browse lists", lists_path
             - if user_signed_in?
               .nav__item = link_to "logout", destroy_user_session_path, :method => :delete
+            - else
+              .nav__item = link_to "login", new_user_session_path
 
         .hero__body
           .space--both-2.align--center
