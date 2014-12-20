@@ -6,8 +6,14 @@ class ListsController < ApplicationController
   end
 
   def create
-    List.create(params)
-    List.save
+    @list = List.new(list_params)
+    @list.save
+
+    if @list.save
+      redirect_to @list
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -16,5 +22,11 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+  end
+
+  private
+
+  def list_params
+    params.require(:list).permit(:title, :description)
   end
 end
