@@ -10,7 +10,7 @@
           = " - #{item.items.count} items"
           .milli = item.description
           .milli
-            = time_ago_in_words(item.created_at)
+            = "#{time_ago_in_words(item.created_at)} - by #{item.user.email}"
 
 
 
