@@ -1,6 +1,18 @@
 Majorette
 =========
 
+Demo
+----------
+After you finished the general app setup, import some demo records
+
+     rake db:seed
+
+There are 2 different users
+
+     admin@example.com:password
+     admin2@example.com:passeord
+
+
 Getting Started
 ---------------
 
