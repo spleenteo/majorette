@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141221002604) do
+ActiveRecord::Schema.define(version: 20141221211251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141221002604) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "items", force: true do |t|
-    t.string   "title",       null: false
+    t.string   "title",                                 null: false
     t.text     "description"
     t.string   "url"
     t.integer  "position"
@@ -41,7 +41,22 @@ ActiveRecord::Schema.define(version: 20141221002604) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
+
+  add_index "items", ["cached_votes_down"], name: "index_items_on_cached_votes_down", using: :btree
+  add_index "items", ["cached_votes_score"], name: "index_items_on_cached_votes_score", using: :btree
+  add_index "items", ["cached_votes_total"], name: "index_items_on_cached_votes_total", using: :btree
+  add_index "items", ["cached_votes_up"], name: "index_items_on_cached_votes_up", using: :btree
+  add_index "items", ["cached_weighted_average"], name: "index_items_on_cached_weighted_average", using: :btree
+  add_index "items", ["cached_weighted_score"], name: "index_items_on_cached_weighted_score", using: :btree
+  add_index "items", ["cached_weighted_total"], name: "index_items_on_cached_weighted_total", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "title",       null: false

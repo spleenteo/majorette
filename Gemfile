@@ -25,6 +25,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'uglifier'
 gem 'unicorn'
+gem 'validate_url'
 
 group :development do
   gem "bundler-audit"

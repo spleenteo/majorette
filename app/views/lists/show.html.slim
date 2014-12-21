@@ -1,7 +1,5 @@
-= link_to "add new item in list #{@list.title}", new_item_path(list_id: @list.id), class: "button--small"
-
-
 .formatted-content
   h1 = @list.title
+  = link_to "add new item in list #{@list.title}", new_item_path(list_id: @list.id), class: "button--small"
 
   = render "items_list", items: @list.items
