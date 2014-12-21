@@ -12,6 +12,11 @@ There are 2 different users
      admin@example.com:password
      admin2@example.com:passeord
 
+Votes
+-------------
+Votes are managed trough a gem act_as_votable
+
+[Checkout the doc](https://github.com/ryanto/acts_as_votable)
 
 Getting Started
 ---------------
