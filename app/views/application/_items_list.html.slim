@@ -5,13 +5,16 @@
         tr.item
           td.item__votes data-title="votes"
             .alpha = item.get_likes.size
-            = form_tag(upvote_path({:id => item.id})) do
-              = submit_tag 'Vote', class: "button--milli"
+            - if current_user.voted_for? item
+              p
+            - else
+              = form_tag(upvote_path({:id => item.id})) do
+                = submit_tag 'Vote', class: "button--milli"
 
           td data-title=""
-            p: strong = item.full_title
-            .milli = item.description
-            .milli = item.meta
+            .item__title = item.full_title
+            .item__description = item.description
+            .item__meta.milli = item.meta
 
           td.item__actions data-title="actions"
             - if item.user == current_user

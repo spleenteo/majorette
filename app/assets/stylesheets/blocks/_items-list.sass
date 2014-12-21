@@ -1,9 +1,26 @@
 .items-list
 
 
+.item
+  &:hover
+    background-color: darken($light-bg-color, 10%) !important
+
 .item__votes
   width: 10%
   text-align: center !important
+
+.item__title
+  +font-size(20px)
+  font-weight: bold
+  a
+    text-decoration: none
+    border-bottom: 3px solid black
+
+.item__description
+  +font-size(14px)
+
+.item__meta
+  font-style: italic
 
 .item__actions
   width: 10%
