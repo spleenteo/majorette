@@ -3,6 +3,7 @@ source 'https://rails-assets.org'
 
 ruby "2.1.5"
 
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'airbrake'
 gem 'autoprefixer-rails'
 gem 'coffee-rails'

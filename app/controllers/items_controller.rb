@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.user_id = current_user.id
+
     @item.save
 
     if @item.save
@@ -27,10 +29,25 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    list = item.list_id
+    item.destroy
+    redirect_to list_path(list)
+  end
+
+  def upvote
+    @item = Item.find(params[:id])
+    if @item.present?
+      @item.liked_by current_user
+      redirect_to list_path(@item.list_id)
+    end
+  end
+
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :url, :list_id)
+    params.require(:item).permit(:title, :description, :url, :list_id, :user_id)
   end
 
 end

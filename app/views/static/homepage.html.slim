@@ -17,17 +17,5 @@
   .grid__item.desk-6-12
     .formatted-content
       h2 Latest entries
-      ul
-        - @items.latest.each do |item|
-          li
-            div
-              strong = item.title
-              '  -
-              = link_to item.list.title, list_path(item.list)
 
-            .milli
-              = link_to item.url, item.url
-            p.milli = item.description
-            .milli
-              = "#{time_ago_in_words(item.created_at)} - by #{item.user.email}"
-
+      = render "items_list", items: @items.latest

@@ -6,8 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-List.create([{title: 'Visual design'}, {title: 'Spritz-plan topics'}])
+User.create :email => "admin@example.com", :password => "password"
+User.create :email => "admin2@example.com", :password => "password"
 
-Item.create([title: "Photoshop export html", description: "lorem ipsum solor sit", url: "http://www.ciccio.it", list_id: 1])
-Item.create([title: "Illustrator path", description: "lorem ipsum solor sit", url: "http://www.google.com", list_id: 1])
-Item.create([title: "Make better videos", description: "lorem ipsum solor sit", url: "http://www.apple.com", list_id: 1])
+List.create([{title: 'Majorette desired features', user_id: 1}])
+List.create([{title: 'Majorette bugs', user_id: 2}])
+
+Item.create([title: "Share items with social", description: "lorem ipsum solor sit", list_id: 1, user_id: 1])
+Item.create([title: "Downvote item", description: "As user I wish to downvote something I don't like", url: "http://www.google.com", list_id: 1, user_id: 2])
+Item.create([title: "Upvotes doesn't work", description: "lorem ipsum solor sit", url: "http://www.apple.com", list_id: 2, user_id: 1])

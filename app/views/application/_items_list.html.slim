@@ -1,0 +1,32 @@
+.items-list
+  table.table
+    thead
+      tr
+        td pos
+        td item
+        td actions
+    tbody
+      - items.each do |item|
+        tr
+          td data-title="votes" = item.get_likes.size
+          td data-title="item"
+            p: strong = item.title
+            .milli = item.description
+            .milli
+              = time_ago_in_words(item.created_at)
+              = " by #{ item.user.email }" if item.user.present?
+
+          td data-title="actions"
+            .nav
+              .nav__item
+                = form_tag(upvote_path({:id => item.id})) do
+                  = submit_tag 'Vote', class: "button--small"
+              - if item.url.present?
+                .nav__item
+                  = link_to "link", item.url, class: "button--small", target: "_blank"
+              .nav__item
+                - if item.user == current_user
+                  = link_to "delete", item_path(item), method: :delete, class: 'button--small button--alert'
+
+
+

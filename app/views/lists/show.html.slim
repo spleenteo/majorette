@@ -4,13 +4,4 @@
 .formatted-content
   h1 = @list.title
 
-  ol
-    - @list.items.each do |item|
-      li
-        div: strong = item.title
-        p.milli = item.description
-        .milli
-          = time_ago_in_words(item.created_at)
-          '  &bull;
-          = link_to item.url, item.url
-
+  = render "items_list", items: @list.items
