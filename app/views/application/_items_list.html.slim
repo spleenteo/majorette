@@ -1,32 +1,23 @@
 .items-list
   table.table
-    thead
-      tr
-        td.items-list__votes
-        td.items-list__body
-        td.items-list__actions
     tbody
-      - items.sort_by(&:cached_votes_total).reverse.each do |item|
-        tr
-          td data-title="votes" = item.get_likes.size
-          td data-title="item"
-            p: strong = item.title
-            .milli = item.description
-            .milli
-              = time_ago_in_words(item.created_at)
-              = " by #{ item.user.email }" if item.user.present?
+      - present_collection(items.sort_by(&:cached_votes_total).reverse).each do |item|
+        tr.item
+          td.item__votes data-title="votes"
+            .alpha = item.get_likes.size
+            = form_tag(upvote_path({:id => item.id})) do
+              = submit_tag 'Vote', class: "button--milli"
 
-          td data-title="actions"
-            .nav
-              .nav__item
-                = form_tag(upvote_path({:id => item.id})) do
-                  = submit_tag 'Vote', class: "button--small"
-              - if item.url.present?
-                .nav__item
-                  = link_to "link", item.url, class: "button--small", target: "_blank"
-              .nav__item
-                - if item.user == current_user
-                  = link_to "delete", item_path(item), method: :delete, class: 'button--small button--alert'
+          td data-title=""
+            p: strong = item.full_title
+            .milli = item.description
+            .milli = item.meta
+
+          td.item__actions data-title="actions"
+            - if item.user == current_user
+              / = link_to "", edit_item_path(item), class: 'icon--check icon--large item__edit'
+
+              = link_to "", item_path(item), method: :delete, class: 'icon--cross icon--large item__delete', data: { confirm: "Are you sure?" }
 
 
 
