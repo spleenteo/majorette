@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :items
   delete '/items/:id(.:format)' => 'items#destroy'
   post '/items/upvote/:id' => 'items#upvote', :as => :upvote
+  post '/items/downvote/:id' => 'items#downvote', :as => :downvote
 
   root to: 'static#homepage'
 end

@@ -6,10 +6,11 @@
           td.item__votes data-title="votes"
             .alpha = item.get_likes.size
             - if current_user.voted_for? item
-              p
+              = form_tag(downvote_path({:id => item.id})) do
+                = submit_tag 'DOWN', class: "button--alert button--milli"
             - else
               = form_tag(upvote_path({:id => item.id})) do
-                = submit_tag 'Vote', class: "button--milli"
+                = submit_tag 'UP', class: "button--primary button--milli"
 
           td data-title=""
             .item__title = item.full_title

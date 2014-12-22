@@ -43,6 +43,13 @@ class ItemsController < ApplicationController
       redirect_to list_path(@item.list_id)
     end
   end
+  def downvote
+    @item = Item.find(params[:id])
+    if @item.present?
+      @item.unliked_by current_user
+      redirect_to list_path(@item.list_id)
+    end
+  end
 
   private
 
