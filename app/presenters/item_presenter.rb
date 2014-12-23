@@ -21,5 +21,9 @@ class ItemPresenter < Showcase::Presenter
     "#{h.time_ago_in_words(created_at)} #{author}"
   end
 
+  def list_link
+    h.link_to list.title, h.list_path(list)
+  end
+
 end
 

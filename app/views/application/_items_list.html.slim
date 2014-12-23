@@ -1,3 +1,4 @@
+- not_in_list ||= false
 .items-list
   table.table
     tbody
@@ -5,23 +6,31 @@
         tr.item
           td.item__votes data-title="votes"
             .alpha = item.get_likes.size
-            - if current_user.voted_for? item
-              = form_tag(downvote_path({:id => item.id})) do
-                = submit_tag 'DOWN', class: "button--alert button--milli"
+            - if not not_in_list.present?
+              - if current_user.voted_for? item
+                = form_tag(downvote_path({:id => item.id})) do
+                  = submit_tag 'DOWN', class: "button--alert button--milli"
+              - else
+                = form_tag(upvote_path({:id => item.id})) do
+                  = submit_tag 'UP', class: "button--primary button--milli"
             - else
-              = form_tag(upvote_path({:id => item.id})) do
-                = submit_tag 'UP', class: "button--primary button--milli"
+              span votes
 
           td data-title=""
             .item__title = item.full_title
             .item__description = item.description
-            .item__meta.milli = item.meta
+            .item__meta.milli
+              =' item.meta
+              - if not_in_list.present?
+                '  in
+                = item.list_link
 
           td.item__actions data-title="actions"
-            - if item.user == current_user
-              / = link_to "", edit_item_path(item), class: 'icon--check icon--large item__edit'
+            - if not not_in_list.present?
+              - if item.user == current_user
+                / = link_to "", edit_item_path(item), class: 'icon--check icon--large item__edit'
 
-              = link_to "", item_path(item), method: :delete, class: 'icon--cross icon--large item__delete', data: { confirm: "Are you sure?" }
+                = link_to "", item_path(item), method: :delete, class: 'icon--cross icon--large item__delete', data: { confirm: "Are you sure?" }
 
 
 

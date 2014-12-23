@@ -1,0 +1,14 @@
+.items-list--lists
+  table.table
+    tbody
+      - present_collection(lists).each do |item|
+        tr.item
+          td.item__votes data-title="votes"
+            .alpha = item.items.count
+            span items
+
+          td data-title=""
+            .item__title = item.full_title
+            .item__description = item.description
+            .item__meta.milli
+              =' item.meta

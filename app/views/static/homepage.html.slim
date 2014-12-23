@@ -3,19 +3,11 @@
 
     .formatted-content
       h2 Latest lists
-
-      - @lists.latest.each do |item|
-        li
-          strong = link_to item.title, list_path(item)
-          = " - #{item.items.count} items"
-          .milli = item.description
-          .milli
-            = "#{time_ago_in_words(item.created_at)} - by #{item.user.email}"
-
+      = render "lists_list", lists: @lists.latest
 
 
   .grid__item.desk-6-12
     .formatted-content
       h2 Latest entries
 
-      = render "items_list", items: @items.latest
+      = render "items_list", items: @items.latest, not_in_list: true

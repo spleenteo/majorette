@@ -1,8 +1,4 @@
 .formatted-content
   h1 list index
+  = render "lists_list", lists: @lists
 
-  ul
-    - @lists.each do |item|
-      li
-        = link_to item.title, list_path(item)
-        .milli = time_ago_in_words(item.created_at)
