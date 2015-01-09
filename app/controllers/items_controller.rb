@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     if params[:list_id]
       @list = List.find(params[:list_id])
+      @item.list = @list
     end
   end
 

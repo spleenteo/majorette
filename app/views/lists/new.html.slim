@@ -2,16 +2,8 @@
   h2 New list
 
 
-.form
-  = form_for @list do |f|
-    fieldset
-      .form__field
-        = f.label :title
-        = f.text_field :title
-
-      .form__field
-        = f.label :description
-        = f.text_area :description
-
-      .button
-        = f.submit
+= simple_form_for @list do |f|
+  fieldset
+    = f.input :title
+    = f.input :description
+    = f.button :submit
