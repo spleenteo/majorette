@@ -2,4 +2,7 @@
   h1 = @list.title
   = link_to "add new item in list #{@list.title}", new_item_path(list_id: @list.id), class: "button--small"
 
+  - if @list.user.id == current_user.id && @list.items.count == 0
+    = link_to "destroy list", list_path(@list.id), method: :delete, class: "button--small button--alert"
+
   = render "items_list", items: @list.items

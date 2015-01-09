@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
     @item.save
 
     if @item.save
+      flash[:notice] = "You have successfully create the item."
       redirect_to list_path(@item.list_id)
     else
       render 'new'
@@ -33,6 +34,7 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     list = item.list_id
     item.destroy
+    flash[:alert] = "You have successfully destroy the item."
     redirect_to list_path(list)
   end
 

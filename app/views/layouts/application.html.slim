@@ -12,24 +12,25 @@ html
 
   body
     = render "flashes"
-    .wrap
-      .hero
-        .hero__sticky
-          .gamma Majorette: upvote everything
-          .nav
-            .nav__item = link_to "home", root_path
-            .nav__item = link_to "browse lists", lists_path
-            - if user_signed_in?
-              .nav__item = link_to "logout", destroy_user_session_path, :method => :delete
-            - else
-              .nav__item = link_to "login", new_user_session_path
 
-        .hero__body
-          .space--both-2.align--center
-            .nav
-              .nav__item
-                = link_to "new list", new_list_path, class: "button--small"
-              .nav__item
-                = link_to "new item", new_item_path, class: "button--small"
+    .site-header
+      .wrap
+        .gamma Majorette / upvote everything
+        .nav--dots
+          .nav__item = link_to "home", root_path
+          .nav__item = link_to "browse lists", lists_path
+          - if user_signed_in?
+            .nav__item = link_to "logout", destroy_user_session_path, :method => :delete
+          - else
+            .nav__item = link_to "login", new_user_session_path
+
+      .space--both-2.align--center
+        .nav
+          .nav__item
+            = link_to "new list", new_list_path, class: "button--small"
+          .nav__item
+            = link_to "new item", new_item_path, class: "button--small"
+
+    .wrap
       = yield
     = render "javascript"
