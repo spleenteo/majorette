@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   post '/items/upvote/:id' => 'items#upvote', :as => :upvote
   post '/items/downvote/:id' => 'items#downvote', :as => :downvote
 
+  get "mystuff" => 'static#mystuff'
   root to: 'static#homepage'
 end

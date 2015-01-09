@@ -20,6 +20,7 @@ html
           .nav__item = link_to "home", root_path
           .nav__item = link_to "browse lists", lists_path
           - if user_signed_in?
+            .nav__item = link_to "my stuff", mystuff_path
             .nav__item = link_to "logout", destroy_user_session_path, :method => :delete
           - else
             .nav__item = link_to "login", new_user_session_path

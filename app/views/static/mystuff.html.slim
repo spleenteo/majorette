@@ -1,0 +1,11 @@
+.grid
+  .grid__item.desk-6-12
+
+    .formatted-content
+      h2 All my lists
+      = render "lists_list", lists: @lists
+
+  .grid__item.desk-6-12
+    .formatted-content
+      h2 All my items
+      = render "items_list", items: @items, not_in_list: true
