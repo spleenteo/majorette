@@ -22,7 +22,7 @@ class ItemPresenter < Showcase::Presenter
   end
 
   def list_link
-    h.link_to list.title, h.list_path(list)
+    h.link_to list.title, h.list_path(list), class: "button--milli"
   end
 
 end

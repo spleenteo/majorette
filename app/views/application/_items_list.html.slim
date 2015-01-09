@@ -21,8 +21,8 @@
             .item__description = item.description
             .item__meta.milli
               =' item.meta
-              - if not_in_list.present?
-                '  in
+            - if not_in_list.present?
+              .align--right
                 = item.list_link
 
           td.item__actions data-title="actions"

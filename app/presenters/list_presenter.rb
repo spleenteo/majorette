@@ -14,6 +14,10 @@ class ListPresenter < Showcase::Presenter
     link title
   end
 
+  def items_count
+    "#{items.count} items in this list"
+  end
+
   def author
     if user.present? && user.id == h.current_user.id
       u = "you"

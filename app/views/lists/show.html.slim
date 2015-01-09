@@ -1,8 +1,14 @@
-.formatted-content
-  h1 = @list.title
-  = link_to "add new item in list #{@list.title}", new_item_path(list_id: @list.id), class: "button--small"
+- list = present(@list)
+h1.alpha = list.title
+p.milli
+  = list.meta
+  ',
+  = list.items_count
 
-  - if @list.user.id == current_user.id && @list.items.count == 0
-    = link_to "destroy list", list_path(@list.id), method: :delete, class: "button--small button--alert"
+.space--both-2.align--center
+  = link_to "add new item in #{@list.title}", new_item_path(list_id: @list.id), class: "button--primary"
 
-  = render "items_list", items: @list.items
+- if @list.user.id == current_user.id && @list.items.count == 0
+  = link_to "destroy list", list_path(@list.id), method: :delete, class: "button--small button--alert"
+
+= render "items_list", items: @list.items
